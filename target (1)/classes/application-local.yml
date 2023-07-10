@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  dynamodb-local:
+    command: "-jar DynamoDBLocal.jar -sharedDb -dbPath ./data"
+    image: "amazon/dynamodb-local:latest"
+    container_name: dynamodb-local
+    ports:
+      - "4569:4569"
+    volumes:
+      - "./docker/dynamodb:/home/dynamodblocal/data"
+    working_dir: /home/dynamodblocal
+
+amazon:
+aws:
+ accesskey: fakeAccesKey
+region: us-east-1
+secretkey: fakeSecret
+dynamodb:
+endpoint: 'http://localhost:4569/'
